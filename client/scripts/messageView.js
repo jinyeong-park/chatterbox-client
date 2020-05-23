@@ -4,7 +4,7 @@ var MessageView = {
 
   <div class="chat">
   <div class="username"><%= name %></div>
-  <div><p>text is going to go here</p></div>
+  <div><p><%= text %></p></div>
   </div>
 
     `)

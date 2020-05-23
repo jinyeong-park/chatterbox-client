@@ -7,51 +7,46 @@ var MessagesView = {
 
   },
 
-  render: function() {
-    console.log(Messages);
-    console.log(Messages[0].username);
-    // var user = Messages[0].username;
-    // var input = MessageView.render({name: user});
-    // var user = Messages[0].username;
-    // var obj = {name : user} // <-----
-    // var html = MessageView.render(obj); // <--- this makes html
-    // $('#chats').append(html);
-
-
+  render: function(roomName) {
+    //first empty chat
+    $('#chats').empty();
     for (let i = 0; i < Messages.length; i++) {
       var user = Messages[i].username;
-      var obj = {name : user}
-      var html = MessageView.render(obj);
-      // console.log(html);
-       $('#chats').append(html);
-      //console.log(Messages[i].username);
+      var msg = Messages[i].text;
+      //if roomName && room !== undefined
+      if (roomName)  {
+        if (roomName === Messages[i].roomname) {
+          MessagesView.renderMessage(msg, user);
+        }
+       //check if message.room matches roomname
+          //if true call MessagesView
+          //else do nothing
+      //else no roomName argumnet
+      } else {
+        MessagesView.renderMessage(msg, user);
+      }
+        //just call MessagesView.render for all messages
+
+      // MessagesView.renderMessage(msg, user);
+      // move everything under here to renderMessage
+      // var textString = (msg === undefined) ? "undefined" : JSON.stringify(msg);
+      // var userText = Parse.sanitize(textString);
+      // var obj = {name : user, text: userText}
+      // var html = MessageView.render(obj);
+
+      // $('#chats').append(html);
     }
 
+  },
 
+  renderMessage: function(message, user){
+      var textString = (message === undefined) ? "undefined" : JSON.stringify(message);
+      var userText = Parse.sanitize(textString);
+      var obj = {name : user, text: userText}
+      var html = MessageView.render(obj);
 
-    // for (var i = 0; i < Messages.length; i++) {
-    //   // console.log(Messages[i].username); //this works
-    //   var user = Messages[i].username;
-    //   var input = MessageView.render({name: user});
-    //   $('#chats').append(input);
-    // }
-
-    // $('#chats').append(input);
-    // $('#chats').append("<p>" + Messages[0].username + "</p>");
-    // $('#chats').append("<p>" + Messages[0].text + "</p>");
-    // var testUser = Messages.results[0].username;
-    // var testText = Messages.results[0].text;
-    // console.log(testUser + " " + testText);
-    // var input = {username: "testtesttest"};
-    // var newMessage = MessageView.render(input);
-    // $('#chats').append(newMessage);
-
-
+      $('#chats').append(html);
   }
-  // render: function(messages) {
-  //   // console.log(messages);
-
-  // }
 
 
 };

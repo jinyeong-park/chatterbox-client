@@ -22,8 +22,8 @@ var App = {
       Messages = Object.assign(data.results);
       // console.log(Messages);
       console.log(data);
-      MessagesView.render();
-
+      // MessagesView.render();
+      RoomsView.initialize();
       callback();
     });
   },

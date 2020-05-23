@@ -33,6 +33,10 @@ var Parse = {
         console.error('chatterbox: Failed to fetch messages', error);
       }
     });
+  },
+
+  sanitize: function(s) {
+    return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
   }
 
 };

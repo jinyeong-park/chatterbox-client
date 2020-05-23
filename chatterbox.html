@@ -27,7 +27,16 @@
       <div class="spinner"><img src="client/images/spiffygif_46x46.gif"></div>
       <div id="rooms">
         Room:
-        <select></select>
+        <select id="mySelect" onchange="RoomsView.handleSelect()"></select>
+<!--
+        <select name="cars" id="cars">
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="mercedes">Mercedes</option>
+          <option value="audi">Audi</option>
+        </select> -->
+
+        <input type="text" name="room" id="room"/>
         <button>Add Room</button>
       </div>
       <form action="#" id="send" method="post">

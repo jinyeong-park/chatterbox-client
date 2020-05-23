@@ -13,12 +13,12 @@ var FormView = {
 
     var message = {
     username: App.username,
-    text: $("#message").val(),
+    text: $("#message").val(), //whatever we type in the text box
     roomname: 'testRoom'
     };
 
     //atempt to send a message to server
-    Parse.create(message); // but how to get message from text bar
+    Parse.create(message); //send "message" to server
     // var test1 = $("#message").val();
     // var test2 = document.getElementById("message").value;
     // console.log(test1);
