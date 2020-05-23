@@ -18,11 +18,19 @@ var RoomsView = {
     MessagesView.render(selectVal);
   },
 
+  addRoomFunction: function(event) {
+    var newRoom = $('#room').val();
+    if (!Rooms[newRoom]) {
+      Rooms[newRoom] = newRoom;
+      console.log("Added room!");
+      RoomsView.render();
+      console.log(Rooms);
+    }
+  },
+
   render: function() {
-    //choice 1
-      //make this function render a new #chats list of message
-    //choice 2
-      //run MessagesView( argument) with argument as room
+    //empty html
+    RoomsView.$select.empty();
     for (let key in Rooms) {
       RoomsView.renderRoom(key)
     }
@@ -44,15 +52,11 @@ var RoomsView = {
       var nameOfRoom = Messages[i].roomname
       if (!Rooms[nameOfRoom]) {
         Rooms[nameOfRoom] = nameOfRoom; //we can check this data structure later
+        //room = {
+        // "someroom": someroom
+        //}
       };
     };
-    //loop through rooms
-    // for (key in Rooms) {
-    //   //make html template for a new option
-    //   var testHtml = `<option value=${Rooms[key]}>${Rooms[key]}</option>`
-    //   //append/add new option to html file
-    //   RoomsView.$select.append(testHtml);
-    // }
   }
 
 };

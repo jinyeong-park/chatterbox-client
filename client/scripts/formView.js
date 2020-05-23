@@ -14,16 +14,16 @@ var FormView = {
     var message = {
     username: App.username,
     text: $("#message").val(), //whatever we type in the text box
-    roomname: 'testRoom'
+    roomname: document.getElementById("mySelect").value
     };
 
     //atempt to send a message to server
     Parse.create(message); //send "message" to server
     // var test1 = $("#message").val();
     // var test2 = document.getElementById("message").value;
-    // console.log(test1);
-    // console.log(test2);
+
     console.log('click!');
+    App.fetch()
   },
 
 
