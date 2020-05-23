@@ -19,9 +19,11 @@ var App = {
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
       // examine the response from the server request:
-      Messages = Object.create(data);
+      Messages = Object.assign(data.results);
+      // console.log(Messages);
       console.log(data);
-      // console.log(data.results[0].text);
+      MessagesView.render();
+
       callback();
     });
   },
@@ -36,3 +38,22 @@ var App = {
     FormView.setStatus(false);
   }
 };
+
+
+
+
+
+// fetch: function(callback = ()=>{}) {
+// Parse.readAll((data) => {
+// if (!data.results || !data.results.length){
+// return;
+// }
+
+// Messages.update(data.results, MessagesView.render);
+
+// Rooms.update(data.results, RoomsView.render);
+
+// callback();
+// });
+// },
+
